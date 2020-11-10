@@ -1,21 +1,21 @@
-1 delimiter $
+1 	delimiter $
 	create function max_voos(quantidade int) returns int
-  begin
-    set @max_voos := (select id, max(quantidade), classe
-    from milhas m, voo v, cliente_voo cv, cliente c
-    where codigo.c = cliente.cv and voo.cv = codigo.v and
-    cliente.cv = cliente.m)
+  	begin
+	    set @max_voos := (select id, max(quantidade), classe
+	    from milhas m, voo v, cliente_voo cv, cliente c
+	    where codigo.c = cliente.cv and voo.cv = codigo.v and
+	    cliente.cv = cliente.m)
 	end
-  delimiter;
+  	delimiter;
   
-2 delimiter $$
+2 	delimiter $$
 	create procedure tempo_voo(out distancia int)
-  begin
-    select sum(distancia)
-    from voo v, piloto p
-    where codigo.p = piloto.v
-  end $$
-  delimiter;
+  	begin
+	    select sum(distancia)
+	    from voo v, piloto p
+	    where codigo.p = piloto.v
+  	end $$
+  	delimiter;
   
 
 
